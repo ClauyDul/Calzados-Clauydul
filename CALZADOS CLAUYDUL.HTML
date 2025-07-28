@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calzados Clauydul - Zapatos para Mujer</title>
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #ffb3c6;
+            --dark: #5d2a42;
+            --light: #fff9fb;
+            --accent: #ff8fab;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 1rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        nav a:hover {
+            background-color: var(--accent);
+        }
+        
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(93, 42, 66, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 0.5rem auto 0;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CALZADOS CLAUYDUL</div>
+        <div class="tagline">Elegancia y comodidad para tus pasos</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Descubre la elegancia en cada paso</h1>
+            <p>Calzados diseñados para la mujer moderna que valora estilo y comodidad</p>
+            <a href="#productos" class="btn">Ver Coleccion</a>
+        </div>
+    </section>
+    
+    <section class="container" id="productos">
+        <h2 class="section-title">Nuestros Productos Destacados</h2>
+        
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://cdn.quicksell.co/-O06-6gSCsiDZuqaGHuD/products/-O4kkRJAVx0vFq9z5u7O.jpg" alt="Zapatos de tacon">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Tacones Elegantes</h3>
+                    <div class="product-price">Q 450.00</div>
+                    <p class="product-description">Tacon de 10 cm con punta cerrada. Disponible en varios colores. Perfecto para ocasiones especiales.</p>
+                    <button class="btn add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i5.walmartimages.com/asr/132929c5-4f0d-48ac-b33b-1929f4b8f5ad.b6e97778d7749249c3e1994acb9c6972.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Zapatillas deportivas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Zapatillas Deportivas</h3>
+                    <div class="product-price">Q 380.00</div>
+                    <p class="product-description">Zapatillas comodas para el dia a dia. Amortiguacion superior y diseño moderno.</p>
+                    <button class="btn add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://www.mussi.com.co/cdn/shop/files/158901_4_-Tacones-meradrane-de-sintetico-para-mujer-Negro.webp?v=1738031907" alt="Sandalias de vestir">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Sandalias de Vestir</h3>
+                    <div class="product-price">Q 320.00</div>
+                    <p class="product-description">Sandalias elegantes con detalles dorados. Ideal para eventos de verano.</p>
+                    <button class="btn add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://ae01.alicdn.com/kf/S994223f114fa45e39aa6624355d468b4l.jpg" alt="Botas de moda">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Botas de Moda</h3>
+                    <div class="product-price">Q 520.00</div>
+                    <p class="product-description">Botas altas de cuero sintetico con tacon grueso. Varios colores disponibles.</p>
+                    <button class="btn add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container" id="ofertas">
+        <h2 class="section-title">Ofertas Especiales</h2>
+        
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i5.walmartimages.com/asr/0499cd51-0b90-442b-9f39-56dbea520caf.db48c823e73f0def79b9b79608916f1f.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Zapatos casuales">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Zapatos Casuales</h3>
+                    <div class="product-price"><span style="text-decoration: line-through; color: #999; margin-right: 10px;">Q 400.00</span> Q 299.00</div>
+                    <p class="product-description">Zapatos planos ideales para el día a día. 25% de descuento por tiempo limitado.</p>
+                    <button class="btn add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://s.alicdn.com/@sc04/kf/H49462ddb415b4a8d836c838c5679fe3aW/2024-New-Style-Women-Tennis-Running-Shoes-Comfortable-Lace-up-Casual-Shoes-Fashion-White-PU-Leather-Sneakers-Walking-Shoes.jpg_300x300.jpg" alt="Zapatillas deportivas premium">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Zapatillas Premium</h3>
+                    <div class="product-price"><span style="text-decoration: line-through; color: #999; margin-right: 10px;">Q 550.00</span> Q 450.00</div>
+                    <p class="product-description">Edicion especial con tecnología de amortiguación avanzada. 18% de descuento.</p>
+                    <button class="btn add-to-cart">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container" id="nosotros">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="margin-bottom: 1.5rem; line-height: 1.6;">Calzados Clauydul es una empresa familiar con mas de 15 años de experiencia en el mercado de calzado femenino. Nos especializamos en ofrecer productos de calidad que combinan estilo, comodidad y durabilidad.</p>
+            <p style="margin-bottom: 1.5rem; line-height: 1.6;">Nuestra mision es empoderar a la mujer moderna a traves de calzado que se adapte a su estilo de vida activo sin sacrificar elegancia y sofisticacion.</p>
+            <p style="line-height: 1.6;">Todos nuestros productos pasan por rigurosos controles de calidad para garantizar tu satisfaccion.</p>
+        </div>
+    </section>
+    
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@calzadosclauydul.com</p>
+                <p>Telefono: +502 1234 5678</p>
+                <p>Direccion: 12 Calle 3-45, Zona 1, Ciudad</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Horario</h3>
+                <p>Lunes a Viernes: 9:00 - 18:00</p>
+                <p>Sabado: 9:00 - 14:00</p>
+                <p>Domingo: Cerrado</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rapidos</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#ofertas">Ofertas</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+        
+        
+        
+    </footer>
+    
+    <script>
+        // Funcionalidad básica del carrito
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-title').textContent;
+                const productPrice = productCard.querySelector('.product-price').textContent;
+                
+                alert(`¡${productName} añadido al carrito!\nPrecio: ${productPrice}`);
+                
+                // Aquí podrías agregar lógica para almacenar en un carrito real
+            });
+        });
+    </script>
+</body>
+</html>
